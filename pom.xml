@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.chen</groupId>
+  <artifactId>srsclient</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  
+  
+  
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- other plugin versions -->
+		<version.compiler.plugin>3.1</version.compiler.plugin>
+		<version.jar.plugin>2.2</version.jar.plugin>
+		<version.exec.plugin>1.1.1</version.exec.plugin>
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-jms-client-bom</artifactId>
+			<type>pom</type>
+			<version>19.0.0.Beta2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.compiler.plugin}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	  <repositories>
+        <repository>
+            <id>jboss-repo</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+  </repositories>
+  
+</project>
