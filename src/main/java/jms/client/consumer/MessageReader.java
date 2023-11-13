@@ -1,4 +1,4 @@
-package topicproblem;
+package jms.client.consumer;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.Context;
 
-public class JMS2SharedConsumer {
+public class MessageReader {
 
 	private static ConnectionFactory connectionFactory;
 	
@@ -38,7 +38,7 @@ public class JMS2SharedConsumer {
 			// JMSConsumer consumer=context.createSharedDurableConsumer(topic,
 			// "MakeItLast");
 			System.out.println("Waiting for messages on topic");
-			TextListener listener = new TextListener();
+			MessagingListener listener = new MessagingListener();
 			consumer.setMessageListener(listener);
 			System.out.println("To end program, enter Q or q, " + "then <return>");
 			InputStreamReader inputStreamReader = new InputStreamReader(System.in);
@@ -50,7 +50,7 @@ public class JMS2SharedConsumer {
 					System.err.println("I/O exception: " + e.toString());
 				}
 			}
-			System.out.println("Text messages received: " + listener.getCount());
+			//System.out.println("Text messages received: " + listener.getCount());
 		} catch (JMSRuntimeException e) {
 			System.err.println("Exception occurred: " + e.toString());
 			System.exit(1);

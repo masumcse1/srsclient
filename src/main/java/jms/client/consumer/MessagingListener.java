@@ -1,6 +1,5 @@
 package jms.client.consumer;
 
-import java.util.Enumeration;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.jms.JMSException;
@@ -15,19 +14,28 @@ public class MessagingListener implements MessageListener {
 		long i;
 
 		try {
+			
+			
 			if (m instanceof MapMessage) {
 				i = count.incrementAndGet();
+				MapMessage mapMessage = (MapMessage) m;
 
-				Enumeration enumeration = ((MapMessage) m).getMapNames();
-				while (enumeration.hasMoreElements()) {
-					String key = (String) enumeration.nextElement();
+				String userId = mapMessage.getString("User_ID");
+                String courseId = mapMessage.getString("Course_ID");
+                String courseName = mapMessage.getString("Course_Name");
+                String dateOfRegistration = mapMessage.getString("Date_of_Registration");
 
-				}
-
-				System.out.println("Reading message: " + m.getBody(MapMessage.class));
+                System.out.println("Received Message: standalone program output--->>>");
+                System.out.println("User_ID: " + userId);
+                System.out.println("Course_ID: " + courseId);
+                System.out.println("Course_Name: " + courseName);
+                System.out.println("Date_of_Registratio: " + dateOfRegistration);
+				
+				
 			} else {
-				System.err.println("Message is not a TextMessage");
+                System.out.println("Received message is not a MapMessage.");
 			}
+			
 		} catch (JMSException e) {
 			System.err.println("Exception in onMessage(): " + e.toString());
 		}
