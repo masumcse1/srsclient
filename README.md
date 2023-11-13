@@ -1,3 +1,3 @@
 # srsclient
 
-After started wildfy server firstly start "JMS2SharedConsumer"  class.
+After started wildfy server firstly start "MessageReader"  class.
